@@ -1,22 +1,10 @@
-# Streamlit App Code (Front-End) - soil_testing.py
 import streamlit as st
 import pandas as pd
-import joblib
-import matplotlib.pyplot as plt
-import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.impute import SimpleImputer
-
-
-# Load the models and imputer
-model_25 = joblib.load('model_25.pkl')
-model_50 = joblib.load('model_50.pkl')
-imputer = joblib.load('imputer.pkl')
-
-# --- Streamlit App Layout ---
-
-
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # --- Data Preparation ---
 data_dict = {
@@ -176,9 +164,6 @@ elif data_operation == "df.std()":
     st.write(data.std())
 
 # --- Upload Other Datasets ---
-
-
-
 # Sidebar for page navigation
 page = st.sidebar.radio("Select Page", ("Upload CSV Data",))
 
@@ -293,4 +278,3 @@ if page == "Upload CSV Data":
         experiment_with_data(data)
     else:
         st.write("Please upload a CSV file to proceed.")
-
